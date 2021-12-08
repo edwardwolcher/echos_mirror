@@ -107,7 +107,7 @@ function windowResized() {
 }
 
 function draw() {
-  if (!face.ready || !drawFunction || !sentiment || !classifier) return;
+  if (!face || !drawFunction || !sentiment || !classifier) return;
 
   if (!running) return;
   drawFunction.draw();
