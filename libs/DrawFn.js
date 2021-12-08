@@ -89,6 +89,17 @@ class DrawFn {
       this.setColor("fg", i, fgColor);
     }
   }
+  randomColor() {
+    const bgHue = random(360);
+    const fgHue = (bgHue + random[(60, 120, 180)]) % 360;
+    const sat = random(100);
+    for (let i = 0; i < 3; i++) {
+      const bgColor = color(bgHue, sat, 50);
+      const fgColor = color(fgHue, sat, 90);
+      this.setColor("bg", i, bgColor);
+      this.setColor("fg", i, fgColor);
+    }
+  }
   resetColors() {
     this.BGcolors = [10, 10, 10];
     this.FGcolors = [220, 220, 220];
@@ -253,9 +264,9 @@ function textSentimentField(parent, layer) {
         charIdx.y * yOffset + yOffset / 2
       );
 
-      if (charIdx.x >= cols && charIdx.y >= rows) {
+      if (charIdx.x >= cols - 1 && charIdx.y >= rows) {
         charIdx.done = true;
-      } else if (charIdx.x >= cols) {
+      } else if (charIdx.x >= cols - 1) {
         charIdx.x = 0;
         charIdx.y++;
       } else {

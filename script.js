@@ -25,7 +25,7 @@ const settings = {
     height: 22,
   },
   frameRate: 30,
-  cycleTime: 3,
+  cycleTime: 2,
   videoOptions: {
     video: {
       facingMode: {
@@ -128,7 +128,7 @@ function updateState() {
     textChangeOptions.append("raw");
   }
 
-  const colorChange = random(["colors", "reset"]);
+  const colorChange = random(["colors", "one-color", "reset"]);
   const textChange = random(textChangeOptions);
   const fnChange = random([
     "random",
@@ -142,6 +142,9 @@ function updateState() {
   switch (colorChange) {
     case "colors":
       drawFunction.randomColors();
+      break;
+    case "one-color":
+      drawFunction.randomColor();
       break;
     case "reset":
       drawFunction.resetColors();
