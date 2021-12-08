@@ -3,6 +3,7 @@ class FaceBox {
     this.video = video;
     this.aspectRatio = aspectRatio;
     this.asciiScale = asciiScale;
+    this.ready = false;
     this.boundingX = 0;
     this.boundingY = 0;
     this.boundingWidth = video.width;
@@ -10,6 +11,7 @@ class FaceBox {
     this.minimumDeviation = minimumDeviation;
     this.faceMesh = ml5.facemesh(video, () => {
       console.log("faceMesh model loaded");
+      this.ready = true;
     });
     this.faceMesh.on("predict", (results) => {
       this._update(results);
